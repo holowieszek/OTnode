@@ -1,4 +1,6 @@
 // src/gameServer.js
+const NetworkMessage = require('./networkMessage');
+
 class GameServer {
   listen(server) {
     console.log('Listening...');
@@ -20,7 +22,10 @@ class GameServer {
   }
 
   onData(socket, data) {
-    console.log(data);
+    const msg = new NetworkMessage();
+    msg.buffer = data;
+
+    console.log(msg.getU16());
   }
 
   onEnd() {
