@@ -20,12 +20,22 @@ class GameServer {
       }
     }
   }
-
+  
   onData(socket, data) {
     const msg = new NetworkMessage();
     msg.buffer = data;
+    const protId = msg.getU16();
 
-    console.log(msg.getU16());
+    if (protId === 0x0201) {
+      msg.skipBytes(15)
+
+      const accnumber = msg.getU32();
+      const password = msg.getString();
+
+      console.log({ accnumber, password });
+    } else {
+      console.log('Unknown packet.')
+    }
   }
 
   onEnd() {
