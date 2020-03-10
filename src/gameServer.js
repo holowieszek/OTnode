@@ -1,5 +1,6 @@
 // src/gameServer.js
 const NetworkMessage = require('./networkMessage');
+const Database = require('./database');
 
 class GameServer {
   listen(server) {
@@ -21,11 +22,11 @@ class GameServer {
     }
   }
   
-  onData(socket, data) {
+  async onData(socket, data) {
     const msg = new NetworkMessage();
     msg.buffer = data;
     const protId = msg.getU16();
-
+    
     if (protId === 0x0201) {
       msg.skipBytes(15)
 
@@ -33,6 +34,12 @@ class GameServer {
       const password = msg.getString();
 
       console.log({ accnumber, password });
+      const db = new Database();
+
+      const account = await db.getAccount(accnumber, password);
+
+      console.log(account);
+
     } else {
       console.log('Unknown packet.')
     }
