@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/holowieszek/OTnode/issues"
   },
-  "homepage": "https://github.com/holowieszek/OTnode#readme"
+  "homepage": "https://github.com/holowieszek/OTnode#readme",
+  "dependencies": {
+    "mysql2": "^2.1.0"
+  }
 }
