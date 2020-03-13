@@ -29,7 +29,6 @@ class GameServer {
     msg.buffer = data;
     const protId = msg.getU16();
 
-    console.log('protId', protId)    
     if (protId === 0x0201) {
       msg.skipBytes(15)
 
@@ -93,6 +92,8 @@ class GameServer {
           msg.addString('Hello world');
           socket.write(msg.buffer);
         }
+      } else {
+        console.log('Unknown packet.', protId)
       }
     }
   }
