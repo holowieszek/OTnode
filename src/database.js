@@ -28,6 +28,20 @@ class Database {
       return error
     }
   }
+
+  async isBanished(nickname) {
+    try {
+      const [rows] = await this.connection().execute(`SELECT isBanished FROM players WHERE nickname = "${nickname}"`);
+
+      if (rows[0].isBanished) {
+        return true;
+      }
+
+      return false;
+    } catch (error) {
+      return error;
+    }
+  }
 }
 
 module.exports = Database;
