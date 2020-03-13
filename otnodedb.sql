@@ -22,7 +22,7 @@ CREATE TABLE `accounts` (
   `account` int(10) NOT NULL,
   `password` varchar(30) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `accounts`
@@ -42,18 +42,19 @@ INSERT INTO `accounts` (`id`, `account`, `password`, `created_at`) VALUES
 CREATE TABLE `players` (
   `id` int(11) NOT NULL,
   `nickname` varchar(50) NOT NULL,
-  `accountId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `accountId` int(11) NOT NULL,
+  `isBanished` BOOLEAN DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `players`
 --
 
-INSERT INTO `players` (`id`, `nickname`, `accountId`) VALUES
-(1, 'Nath Rakol', 1),
-(2, 'Seyrino Faryk', 1),
-(3, 'Durus Lazy', 2),
-(4, 'Malis Suchendor', 3);
+INSERT INTO `players` (`id`, `nickname`, `accountId`, `isBanished`) VALUES
+(1, 'Nath Rakol', 1, 0),
+(2, 'Seyrino Faryk', 1, 0),
+(3, 'Durus Lazy', 2, 0),
+(4, 'Malis Suchendor', 3, 0);
 
 --
 -- Indexes for dumped tables
