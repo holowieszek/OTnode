@@ -61,6 +61,14 @@ class NetworkMessage {
 
     return v;
   }
+
+  addU32(value) {
+    value &= 0xFFFFFFFF;
+    this.buffer[this.offset++] = value & 0xFF;
+    this.buffer[this.offset++] = (value >> 8) & 0xFF;
+    this.buffer[this.offset++] = (value >> 16) & 0xFF;
+    this.buffer[this.offset++] = (value >> 24) & 0xFF;
+  }
 }
 
 module.exports = NetworkMessage;
