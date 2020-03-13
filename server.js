@@ -1,4 +1,3 @@
-// server.js
 const net = require('net');
 const GameServer = require('./src/gameServer');
 const PORT = 7171;

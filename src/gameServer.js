@@ -1,4 +1,3 @@
-// src/gameServer.js
 const NetworkMessage = require('./networkMessage');
 const Database = require('./database');
 

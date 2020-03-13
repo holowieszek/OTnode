@@ -1,4 +1,3 @@
-// src/networkMessage.js
 class NetworkMessage {
   constructor() {
     this.buffer = [];
